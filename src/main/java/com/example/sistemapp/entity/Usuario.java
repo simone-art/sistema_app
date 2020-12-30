@@ -21,8 +21,6 @@ public class Usuario implements Serializable {
     private String Sobrenome;
     @Column(unique = true)
     private String email;
-    @Column(unique = true)
-    private String Usuario;
     @Column
     private String senha;
 
@@ -61,13 +59,6 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public String getUsuario() {
-        return Usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        Usuario = usuario;
-    }
 
     public String getSenha() {
         return senha;
