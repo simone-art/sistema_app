@@ -14,11 +14,11 @@ public class Conteudo implements Serializable {
     private long codigo;
 
     @Column
-    private String conteudo;
+    private String Material;
     @Column
-    private int palavras;
+    private int Palavras;
     @Column
-    private int caracteres;
+    private int Caracteres;
 
     public long getCodigo() {
         return codigo;
@@ -28,27 +28,27 @@ public class Conteudo implements Serializable {
         this.codigo = codigo;
     }
 
-    public String getConteudo() {
-        return conteudo;
+    public String getMaterial() {
+        return Material;
     }
 
-    public void setConteudo(String conteudo) {
-        this.conteudo = conteudo;
+    public void setMaterial(String material) {
+        Material = material;
     }
 
     public int getPalavras() {
-        return palavras;
+        return Palavras;
     }
 
     public void setPalavras(int palavras) {
-        this.palavras = palavras;
+        Palavras = palavras;
     }
 
     public int getCaracteres() {
-        return caracteres;
+        return Caracteres;
     }
 
     public void setCaracteres(int caracteres) {
-        this.caracteres = caracteres;
+        Caracteres = caracteres;
     }
 }

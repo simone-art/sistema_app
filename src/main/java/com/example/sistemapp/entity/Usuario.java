@@ -3,6 +3,9 @@ package com.example.sistemapp.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -16,15 +19,31 @@ public class Usuario implements Serializable {
     private long codigo;
 
     @Column
+    @NotBlank
+    //@NotNull(message = "Nome não pode ser nulo")
+    //@NotEmpty(message="Nome não pode ser vazio")
     private String Nome;
+
     @Column
+    @NotBlank
+    //@NotNull(message = "Sobrenome não pode ser nulo")
+    //@NotEmpty(message="Sobrenome não pode ser vazio")
     private String Sobrenome;
+
     @Column(unique = true)
+    @NotBlank
+    //@NotNull(message = "Email não pode ser nulo")
+    //@NotEmpty(message="Email não pode ser vazio")
     private String email;
+
     @Column
+    @NotBlank
+    //@NotNull(message = "Senha não pode ser nula")
+    //@NotEmpty(message="Senha não pode ser vazia")
     private String senha;
 
     @Transient
+    //@NotEmpty(message="Senha não foi confirmada. Por favor digite novamente")
     private String confirmaSenha;
 
     public long getCodigo() {
