@@ -5,12 +5,14 @@ import com.example.sistemapp.entity.Usuario;
 import com.example.sistemapp.repository.ConteudoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 
 import javax.print.Doc;
 import javax.swing.*;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -21,18 +23,51 @@ public class ConteudoController {
     private ConteudoRepository cr;
 
     @RequestMapping(value = "/conteudo", method = RequestMethod.GET)
-    public String form() {
+    public String textarea() {
         return "/conteudo/conteudoTextarea";
     }
 
     @RequestMapping(value = "/conteudo", method = RequestMethod.POST)
-    public String form(Conteudo conteudo) {
+    public String textarea(Conteudo conteudo) {
         cr.save(conteudo);
-        //contadorPalavras(conteudo.getConteudo());
-        //JOptionPane.showMessageDialog(null, "A aquantidade de palavras é: " + conteudo.getConteudo());
+        //contadorPalavras(conteudo.getMaterial());
+        //JOptionPane.showMessageDialog(null, "A aquantidade de palavras é: " + conteudo.getMaterial());
+        //contadorCaracteres(conteudo.getMaterial());
+
         return "redirect:/conteudo";
 
     }
+
+//    public static int contadorPalavras (String Material){
+//        Scanner lerPalavras = new Scanner(System.in);
+//        lerPalavras.next().trim();
+    //Material = Material.trim();
+//        int quantPalavras = 0 ;
+//        if (Material.isEmpty()) {
+//            quantPalavras = 0;
+//        } else {
+//            Material.indexOf(" ");
+//            for (int x = 0; x <Material.length(); x++);{
+//                quantPalavras = Material.indexOf(" ", quantPalavras + 1);
+//            }
+//        }
+//        return quantPalavras;
+//
+//    }
+
+    //public static int contadorCaracteres(String Material) {
+    //String[] arr;
+    //Scanner sc = new Scanner(System.in);
+    //String material = sc.nextLine();
+    //int palavras = 0;
+    //int palavras = palavras.length();
+    //arr = new String[palavras];
+    //for (int i = 0; i <palavras; i++) {
+    //char a = palavras.charAt(pa);
+    //arr[i] = String.valueOf(a);
+    //}
+    //return palavras;
+    //}
 
 
     @RequestMapping("/conteudos")
@@ -44,5 +79,12 @@ public class ConteudoController {
     }
 
 
+    @RequestMapping("conteudo/dadosConteudo/{codigo}")
+    public ModelAndView dadosUsuario(@PathVariable("codigo") long codigo) {
+        Conteudo conteudo = cr.findByCodigo(codigo);
+        ModelAndView cmv = new ModelAndView("conteudo/dadosConteudo");
+        cmv.addObject("conteudo", conteudo);
+        return cmv;
 
+    }
 }
