@@ -29,11 +29,11 @@
     </thead>
     <tbody>
     <tr class="row" th:each="conteudo : ${conteudos}">
-        <td> <a th:href="@{/dadosConteudo/{codigo}(codigo = ${conteudo.codigo})}"><span th:text="${conteudo.material}"></span></a></td>
-        <td th:int="${conteudo.quantPalavras}"></td>
-        <td th:int="${conteudo.quantCaracteres}"></td>
+        <td> <a th:href="@{conteudo/dadosConteudo/{codigo}(codigo = ${conteudo.codigo})}"><span th:text="${conteudo.material}"></span></a></td>
+        <td th:text="${conteudo.quantPalavras}"></td>
+        <td th:text="${conteudo.quantCaracteres}"></td>
         <td>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Editar
+        <button th:href="@{/editar} +${conteudo.codigo}"  class="btn waves-effect waves-light" type="submit" name="action">Editar
             <i class="material-icons right">send</i>
         </button>
         </td>

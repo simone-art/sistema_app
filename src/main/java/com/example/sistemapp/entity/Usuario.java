@@ -3,10 +3,9 @@ package com.example.sistemapp.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.io.Serializable;
+
 
 @Entity
 public class Usuario implements Serializable {
@@ -19,31 +18,33 @@ public class Usuario implements Serializable {
     private long codigo;
 
     @Column
-    @NotBlank
-    //@NotNull(message = "Nome não pode ser nulo")
-    //@NotEmpty(message="Nome não pode ser vazio")
+    //@NotBlank
+   //@Size(min= 3, max = 50, message = "O campo não cumpre a regra de tamanho")
+//    @NotEmpty
     private String Nome;
 
     @Column
-    @NotBlank
-    //@NotNull(message = "Sobrenome não pode ser nulo")
-    //@NotEmpty(message="Sobrenome não pode ser vazio")
+    //@NotBlank
+//    @NotEmpty
     private String Sobrenome;
 
     @Column(unique = true)
-    @NotBlank
-    //@NotNull(message = "Email não pode ser nulo")
-    //@NotEmpty(message="Email não pode ser vazio")
+    //@NotBlank
+    //@Email
+//    @NotEmpty
+//    @Email
     private String email;
 
     @Column
-    @NotBlank
-    //@NotNull(message = "Senha não pode ser nula")
-    //@NotEmpty(message="Senha não pode ser vazia")
+    //@NotBlank
+    //@NotEmpty
+//    @NotNull
     private String senha;
 
     @Transient
-    //@NotEmpty(message="Senha não foi confirmada. Por favor digite novamente")
+    //@NotEmpty
+    //@NotBlank
+//    @NotNull
     private String confirmaSenha;
 
     public long getCodigo() {
@@ -94,4 +95,5 @@ public class Usuario implements Serializable {
     public void setConfirmaSenha(String confirmaSenha) {
         this.confirmaSenha = confirmaSenha;
     }
+
 }

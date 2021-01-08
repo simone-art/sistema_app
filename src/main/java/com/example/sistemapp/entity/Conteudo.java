@@ -16,9 +16,9 @@ public class Conteudo implements Serializable {
     @Column
     private String Material;
     @Column
-    private int Palavras;
+    private int quantPalavras;
     @Column
-    private int Caracteres;
+    private int quantCaracteres;
 
     public long getCodigo() {
         return codigo;
@@ -36,19 +36,19 @@ public class Conteudo implements Serializable {
         Material = material;
     }
 
-    public int getPalavras() {
-        return Palavras;
+    public int getQuantPalavras() {
+        return quantPalavras;
     }
 
-    public void setPalavras(int palavras) {
-        Palavras = palavras;
+    public void setQuantPalavras(int quantPalavras) {
+        quantPalavras = quantPalavras;
     }
 
-    public int getCaracteres() {
-        return Caracteres;
+    public int getQuantCaracteres() {
+        return quantCaracteres;
     }
 
-    public void setCaracteres(int caracteres) {
-        Caracteres = caracteres;
+    public void set(int quantCaracteres) {
+        quantCaracteres = quantCaracteres;
     }
 }

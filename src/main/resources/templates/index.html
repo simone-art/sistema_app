@@ -29,10 +29,12 @@
         <td th:text="${usuario.sobrenome}"></td>
         <td th:text="${usuario.email}"></td>
         <td th:text="${usuario.senha}"></td>
-<!--        <td> <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Editar-->
-<!--            <i class="material-icons right">crop_rotate</i>-->
-<!--        </button>-->
-<!--        </td>-->
+        <td>
+            <a th:href="@{editar/{codigo}(codigo=${usuario.codigo})}">
+            <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Editar
+            <i class="material-icons right">crop_rotate</i>
+        </button></a>
+        </td>
         <td>
             <a th:href="@{deletar/{codigo}(codigo=${usuario.codigo})}">
                 <button class="btn waves-effect waves-light btn-small" type="submit" name="_method" >Deletar

@@ -5,6 +5,7 @@ import com.example.sistemapp.entity.Usuario;
 import com.example.sistemapp.repository.ConteudoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -80,7 +81,7 @@ public class ConteudoController {
 
 
     @RequestMapping("conteudo/dadosConteudo/{codigo}")
-    public ModelAndView dadosUsuario(@PathVariable("codigo") long codigo) {
+    public ModelAndView dadosConteudo(@PathVariable("codigo") long codigo) {
         Conteudo conteudo = cr.findByCodigo(codigo);
         ModelAndView cmv = new ModelAndView("conteudo/dadosConteudo");
         cmv.addObject("conteudo", conteudo);
