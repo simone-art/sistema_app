@@ -18,33 +18,26 @@ public class Usuario implements Serializable {
     private long codigo;
 
     @Column
-    //@NotBlank
-   //@Size(min= 3, max = 50, message = "O campo não cumpre a regra de tamanho")
-//    @NotEmpty
+    @NotBlank
+    @Size(min= 3, max = 40, message = "O nome deve contar no mínimo 3 caracteres")
     private String Nome;
 
     @Column
-    //@NotBlank
-//    @NotEmpty
+    @NotBlank
+    @Size(min= 3, max = 40, message = "O nome deve contar no mínimo 3 caracteres")
     private String Sobrenome;
 
     @Column(unique = true)
-    //@NotBlank
-    //@Email
-//    @NotEmpty
-//    @Email
+    @NotBlank
+    @Email
     private String email;
 
     @Column
-    //@NotBlank
-    //@NotEmpty
-//    @NotNull
+    @NotBlank
+    @Size(min= 3, max = 40, message = "A senha deve contar no mínimo  com 6 caracteres, uma letra em maiúscula e caracteres especiais")
     private String senha;
 
     @Transient
-    //@NotEmpty
-    //@NotBlank
-//    @NotNull
     private String confirmaSenha;
 
     public long getCodigo() {

@@ -28,27 +28,25 @@ public class UsuarioController {
     }
 
 
-    @RequestMapping(value = "/cadastrarUsuario", method = RequestMethod.POST)
-    public String form(@Valid Usuario usuario) {
-         ur.save(usuario);
-         return "redirect:/cadastrarUsuario";
-    }
-
-
-//   @RequestMapping(value = "/cadastrarUsuario", method = RequestMethod.POST)
-//    public String form(@Valid Usuario usuario, BindingResult bindingResul, RedirectAttributes attributes) {
-//        if (bindingResul.hasErrors()) {
-//            attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-//            return "redirect:/cadastrarUsuario";
-//        }
-//        else {
-//            ur.save(usuario);
-//            attributes.addFlashAttribute("mensagem", "Cadastro feito com sucesso!");
-//            return "redirect:/conteudo";
-//
-//        }
+//    @RequestMapping(value = "/cadastrarUsuario", method = RequestMethod.POST)
+//    public String form(@Valid Usuario usuario) {
+//         ur.save(usuario);
+//         return "redirect:/cadastrarUsuario";
 //    }
 
+
+   @PostMapping("/cadastrarUsuario")
+    public String form(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
+        if (result.hasErrors()) {
+            attributes.addFlashAttribute("mensagem", "Verifique os campos!");
+            return "redirect:/cadastrarUsuario";
+        } else{
+            ur.save(usuario);
+            attributes.addFlashAttribute("mensagem", "Cadastro feito com sucesso!");
+        }
+            return "redirect:/conteudo";
+
+    }
 
     @RequestMapping("/usuarios")
     public ModelAndView ListaUsuarios(){
